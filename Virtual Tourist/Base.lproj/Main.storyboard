@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Photo View Controller-->
         <scene sceneID="VNS-tR-dT4">
             <objects>
-                <viewController id="gFf-i4-epP" sceneMemberID="viewController">
+                <viewController id="gFf-i4-epP" customClass="PhotoViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IJ3-WV-IhQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Isl-vS-2wG"/>
@@ -53,11 +53,17 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnP-l7-pDn">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="yBf-yJ-6Rz"/>
+                                    <navigationItem title="Title" id="yBf-yJ-6Rz">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="LKb-SP-MzP">
+                                            <connections>
+                                                <action selector="doneTapped:" destination="gFf-i4-epP" id="stH-3H-Rc3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcL-zj-fka">
-                                <rect key="frame" x="0.0" y="600" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Item" id="OAg-fn-aik"/>
                                 </items>
@@ -65,6 +71,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rcL-zj-fka" secondAttribute="bottom" id="2tJ-Fh-KZS"/>
                             <constraint firstItem="Isl-vS-2wG" firstAttribute="top" secondItem="jz7-yM-P3K" secondAttribute="bottom" id="4fL-sY-PgI"/>
                             <constraint firstItem="PnP-l7-pDn" firstAttribute="top" secondItem="IJ3-WV-IhQ" secondAttribute="bottom" id="7jj-o4-9cr"/>
                             <constraint firstItem="rcL-zj-fka" firstAttribute="leading" secondItem="xlZ-TT-LT8" secondAttribute="leading" id="8vX-DH-oRi"/>
@@ -72,15 +79,19 @@
                             <constraint firstAttribute="trailing" secondItem="rcL-zj-fka" secondAttribute="trailing" id="OsT-zT-oZy"/>
                             <constraint firstItem="PnP-l7-pDn" firstAttribute="leading" secondItem="xlZ-TT-LT8" secondAttribute="leading" id="QZy-Xs-5w8"/>
                             <constraint firstItem="jz7-yM-P3K" firstAttribute="top" secondItem="PnP-l7-pDn" secondAttribute="bottom" id="TRI-qg-KzD"/>
-                            <constraint firstItem="rcL-zj-fka" firstAttribute="top" secondItem="Isl-vS-2wG" secondAttribute="bottom" id="Yby-kL-vTo"/>
                             <constraint firstAttribute="trailing" secondItem="PnP-l7-pDn" secondAttribute="trailing" id="gpT-IG-b7E"/>
                             <constraint firstItem="jz7-yM-P3K" firstAttribute="leading" secondItem="xlZ-TT-LT8" secondAttribute="leading" id="ycF-Kz-pwF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="rrY-34-Hue" id="uB9-tZ-SrB"/>
+                        <outlet property="navBarTitle" destination="yBf-yJ-6Rz" id="VjS-jy-UpD"/>
+                        <outlet property="photoCV" destination="lcn-b2-qCg" id="io7-xC-zjR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="noc-Xi-7LH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="111"/>
+            <point key="canvasLocation" x="1035" y="418"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">

@@ -117,6 +117,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPhotoViewController" {
+            let destVC = segue.destinationViewController as! PhotoViewController
+            destVC.pin = sender as! Pin
+            
+        }
+    }
         
     func addPinToMap(pin: Pin) -> Void {
         
@@ -157,9 +165,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 return
             }
         })
-    
-        
-
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -183,7 +188,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        performSegueWithIdentifier("toPhotoViewController", sender: nil)
+        performSegueWithIdentifier("toPhotoViewController", sender: view.annotation)
     }
     
 
