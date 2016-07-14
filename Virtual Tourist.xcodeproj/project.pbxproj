@@ -10,7 +10,6 @@
 		01011E721D2F0A0100D8CD13 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01011E711D2F0A0100D8CD13 /* CoreDataStack.swift */; };
 		01011E771D2F0E8A00D8CD13 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01011E731D2F0E8A00D8CD13 /* Photo+CoreDataProperties.swift */; };
 		01011E781D2F0E8A00D8CD13 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01011E741D2F0E8A00D8CD13 /* Photo.swift */; };
-		01011E811D2F224500D8CD13 /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01011E7F1D2F224500D8CD13 /* Pin+CoreDataProperties.swift */; };
 		01011E821D2F224500D8CD13 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01011E801D2F224500D8CD13 /* Pin.swift */; };
 		01011E841D2F516B00D8CD13 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01011E831D2F516B00D8CD13 /* PhotoViewController.swift */; };
 		01F9F1871D1CB158007EC7A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F9F1861D1CB158007EC7A1 /* AppDelegate.swift */; };
@@ -21,13 +20,16 @@
 		01F9F1941D1CB158007EC7A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F9F1921D1CB158007EC7A1 /* LaunchScreen.storyboard */; };
 		01F9F19C1D1CB595007EC7A1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F9F19B1D1CB595007EC7A1 /* MapKit.framework */; };
 		01F9F19E1D1CBC07007EC7A1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F9F19D1D1CBC07007EC7A1 /* CoreLocation.framework */; };
+		B47E70101D3453900027E6DE /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47E700F1D3453900027E6DE /* Flickr.swift */; };
+		B47E70151D3481070027E6DE /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47E70141D3481070027E6DE /* PhotoCollectionViewCell.swift */; };
+		B47E70171D3709CE0027E6DE /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47E70161D3709CE0027E6DE /* Pin+CoreDataProperties.swift */; };
+		B47E70191D382B820027E6DE /* Virtual Tourist App Icons in Resources */ = {isa = PBXBuildFile; fileRef = B47E70181D382B820027E6DE /* Virtual Tourist App Icons */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01011E711D2F0A0100D8CD13 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		01011E731D2F0E8A00D8CD13 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "../Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01011E741D2F0E8A00D8CD13 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = ../Photo.swift; sourceTree = "<group>"; };
-		01011E7F1D2F224500D8CD13 /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01011E801D2F224500D8CD13 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pin.swift; path = ../Pin.swift; sourceTree = "<group>"; };
 		01011E831D2F516B00D8CD13 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		01F9F1831D1CB158007EC7A1 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +42,10 @@
 		01F9F1951D1CB158007EC7A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01F9F19B1D1CB595007EC7A1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		01F9F19D1D1CBC07007EC7A1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B47E700F1D3453900027E6DE /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
+		B47E70141D3481070027E6DE /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B47E70161D3709CE0027E6DE /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B47E70181D382B820027E6DE /* Virtual Tourist App Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Virtual Tourist App Icons"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +64,13 @@
 		01011E701D2F09EC00D8CD13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				01011E7F1D2F224500D8CD13 /* Pin+CoreDataProperties.swift */,
+				B47E70161D3709CE0027E6DE /* Pin+CoreDataProperties.swift */,
 				01011E801D2F224500D8CD13 /* Pin.swift */,
 				01F9F18D1D1CB158007EC7A1 /* Virtual_Tourist.xcdatamodeld */,
 				01011E731D2F0E8A00D8CD13 /* Photo+CoreDataProperties.swift */,
 				01011E741D2F0E8A00D8CD13 /* Photo.swift */,
 				01011E711D2F0A0100D8CD13 /* CoreDataStack.swift */,
+				B47E700F1D3453900027E6DE /* Flickr.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -89,16 +96,26 @@
 		01F9F1851D1CB158007EC7A1 /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				B47E70111D34742A0027E6DE /* Controllers */,
 				01011E701D2F09EC00D8CD13 /* Model */,
 				01F9F1861D1CB158007EC7A1 /* AppDelegate.swift */,
-				01F9F1881D1CB158007EC7A1 /* MapViewController.swift */,
 				01F9F18A1D1CB158007EC7A1 /* Main.storyboard */,
-				01011E831D2F516B00D8CD13 /* PhotoViewController.swift */,
+				B47E70141D3481070027E6DE /* PhotoCollectionViewCell.swift */,
 				01F9F1901D1CB158007EC7A1 /* Assets.xcassets */,
+				B47E70181D382B820027E6DE /* Virtual Tourist App Icons */,
 				01F9F1921D1CB158007EC7A1 /* LaunchScreen.storyboard */,
 				01F9F1951D1CB158007EC7A1 /* Info.plist */,
 			);
 			path = "Virtual Tourist";
+			sourceTree = "<group>";
+		};
+		B47E70111D34742A0027E6DE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01F9F1881D1CB158007EC7A1 /* MapViewController.swift */,
+				01011E831D2F516B00D8CD13 /* PhotoViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +180,7 @@
 				01F9F1941D1CB158007EC7A1 /* LaunchScreen.storyboard in Resources */,
 				01F9F1911D1CB158007EC7A1 /* Assets.xcassets in Resources */,
 				01F9F18C1D1CB158007EC7A1 /* Main.storyboard in Resources */,
+				B47E70191D382B820027E6DE /* Virtual Tourist App Icons in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,10 +192,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				01011E781D2F0E8A00D8CD13 /* Photo.swift in Sources */,
+				B47E70171D3709CE0027E6DE /* Pin+CoreDataProperties.swift in Sources */,
 				01F9F1891D1CB158007EC7A1 /* MapViewController.swift in Sources */,
+				B47E70101D3453900027E6DE /* Flickr.swift in Sources */,
 				01011E721D2F0A0100D8CD13 /* CoreDataStack.swift in Sources */,
 				01011E821D2F224500D8CD13 /* Pin.swift in Sources */,
-				01011E811D2F224500D8CD13 /* Pin+CoreDataProperties.swift in Sources */,
+				B47E70151D3481070027E6DE /* PhotoCollectionViewCell.swift in Sources */,
 				01011E841D2F516B00D8CD13 /* PhotoViewController.swift in Sources */,
 				01F9F18F1D1CB158007EC7A1 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				01011E771D2F0E8A00D8CD13 /* Photo+CoreDataProperties.swift in Sources */,
