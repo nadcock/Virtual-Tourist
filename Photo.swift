@@ -22,9 +22,6 @@ class Photo: NSManagedObject {
         let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         pin = photoPin
-        //photo = downloadedImage
-        //let photoSize = Double(photo!.length) / 1024.0
-        //print("image \"\(title!)\" created with an image of \(photo!.length)KB")
     }
 
 }

@@ -65,7 +65,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         do {
             return try stack.context.executeFetchRequest(fetchRequest) as! [Pin]
         } catch {
-            print("Error in fectchAllActors()")
+            print("Error in CoreDataStack()")
         }
         
         return [Pin]()
@@ -76,7 +76,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //print("locationManager has triggered")
         let location = locations.last
         
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
@@ -132,7 +131,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toPhotoViewController" {
-            print("segue to PhotoViewController")
             let destVC = segue.destinationViewController as! PhotoViewController
             destVC.pin = sender as! Pin
         }
@@ -148,7 +146,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             if placemarks!.count > 0 {
                 let pm = placemarks![0]
-                //print(pm)
                 
                 if (pm.subLocality != nil) {
                     pin.title = pm.subLocality!
@@ -180,7 +177,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        print("Pin was tapped")
         performSegueWithIdentifier("toPhotoViewController", sender: view.annotation)
     }
     

@@ -12,27 +12,4 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var image: UIImageView!
-
-    
-//    override func prepareForReuse() {
-//        spinner.hidesWhenStopped = true
-//        setPlaceHolderImage()
-//        if isDownloading {
-//            print("*** SPINNER IS ANIMATING ***")
-//            spinner.startAnimating()
-//        } else {
-//            print("*** SPINNER IS NOT ANIMATING ***")
-//            spinner.stopAnimating()
-//        }
-    
-//        if image.image == nil {
-//            print("*** SPINNER STARTED ANIATING ***")
-//            spinner.startAnimating()
-//        } else {
-//            print("*** SPINNER STOP ANIATING (IN CELL REUSE) ***")
-//            spinner.stopAnimating()
-//        }
-    
-    
-    
 }

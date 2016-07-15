@@ -49,7 +49,6 @@ class FlickrSearch {
         
         let session = NSURLSession.sharedSession()
         let urlString = BASE_URL + escapedParameters(methodArguments)
-        print("urlString: \(urlString)")
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
         
@@ -97,7 +96,6 @@ class FlickrSearch {
                 return
             }
             
-            //print("\(parsedResult)")
             
             /* GUARD: Is "photos" key in our result? */
             guard let photosDictionary = parsedResult["photos"] as? NSDictionary else {
@@ -109,7 +107,6 @@ class FlickrSearch {
             
             for (key, value) in photosDictionary {
                 if key as! String == "pages" {
-                    print("Pages: \(value)")
                     pages = value.integerValue
                 }
             }
@@ -137,8 +134,6 @@ class FlickrSearch {
                 let numberOfPhotosToDownload = photosArray.count
                 var photosDownloaded = 1
                 
-                print("Downloaded Iamage Coung: \(photosArray.count) Current Photo Count: \(currentPhotos.count)")
-                
                 if photosArray.count == currentPhotos.count {
                     for (index, photo) in photosArray.enumerate() {
                         let currentPhoto = currentPhotos[index]
@@ -156,12 +151,9 @@ class FlickrSearch {
                                 
                                 if photosDownloaded == numberOfPhotosToDownload {
                                     pin.isDownloading = false
-                                    print("DOWNLOADING IS COMPLETE")
                                 } else {
-                                    print("PHOTOS DOWNLOADED: \(photosDownloaded)")
                                     photosDownloaded += 1
                                 }
-                                print("isDownloading: \(pin.isDownloading)")
                                 
                             }
                         }
@@ -184,13 +176,9 @@ class FlickrSearch {
                                 
                                 if photosDownloaded == numberOfPhotosToDownload {
                                     pin.isDownloading = false
-                                    print("DOWNLOADING IS COMPLETE")
                                 } else {
-                                    print("PHOTOS DOWNLOADED: \(photosDownloaded)")
                                     photosDownloaded += 1
                                 }
-                                print("isDownloading: \(pin.isDownloading)")
-                                
                             }
                         }
                     }

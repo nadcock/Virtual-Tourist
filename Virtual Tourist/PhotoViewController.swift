@@ -52,19 +52,13 @@ class PhotoViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         fetchedResultsController.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        print("################# viewDidLoad Called ###############################")
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("################# viewWillAppear Called ###############################")
-        
         if pin!.isDownloading == true {
-            print("################# isDownloading on load: TRUE ###############################")
             newCollectionButton.enabled = false
-        } else {
-            print("################# isDownloading on load: False ###############################")
         }
+        
         do {
             try fetchedResultsController.performFetch()
         } catch {}
@@ -79,12 +73,10 @@ class PhotoViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         }
     }
     
-    
     @IBAction func doneTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-
     @IBAction func getNewCollection(sender: UIBarButtonItem) {
         newCollectionButton.enabled = false
         photoArray = fetchedResultsController.fetchedObjects as! [Photo]
@@ -93,9 +85,9 @@ class PhotoViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             let placeholderData: NSData = UIImagePNGRepresentation(placeholder)!
             photo.photo = placeholderData
         }
-        //FlickrSearch.sharedInstance.isDownloading = true
         FlickrSearch.sharedInstance.getImageFromFlickrForPin(pin!, currentPhotos: photoArray, context: self.context)
     }
+    
     
     //MARK: CollectionViewDataSource Required Methods
     
@@ -106,9 +98,7 @@ class PhotoViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
-        //return 21
     }
-    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let CellIdentifier = "PhotoCell"
@@ -117,15 +107,8 @@ class PhotoViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! PhotoCollectionViewCell
         
-        //cell.spinner.startAnimating()
-        
         if let backgroundImage = photo.photo {
-            print("*** SPINNER STOPPED ANIATING ***")
-            //cell.isDownloading = false
             cell.image.image = UIImage(data: backgroundImage)
-        } else {
-            
-            //cell.spinner.startAnimating()
         }
         
         return cell
@@ -178,14 +161,10 @@ class PhotoViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             }
             }, completion: { (sucess) -> Void in
                 if self.pin!.isDownloading == false {
-                    print("ENABLING BUTTON")
                     self.newCollectionButton.enabled = true
                 }
-                
         })
     }
-    
-    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let numberOfItemsPerRow = 3
