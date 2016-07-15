@@ -11,14 +11,15 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    @IBOutlet weak var mapView: MKMapView!
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+    @IBOutlet var mapView: MKMapView!
     
     // Get the stack
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     let locationManager = CLLocationManager()
     let userDefaults = NSUserDefaults.standardUserDefaults()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +49,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        let stack = delegate.stack
+        mapView.addAnnotations(fetchAllPins(stack))
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        let stack = delegate.stack
+        mapView.removeAnnotations(fetchAllPins(stack))
+    }
+
+    
     func fetchAllPins(stack: CoreDataStack) -> [Pin] {
         let fetchRequest = NSFetchRequest(entityName: "Pin")
         do {
             return try stack.context.executeFetchRequest(fetchRequest) as! [Pin]
         } catch {
-            print("Error in fectchAllActors()")
+            print("Error in CoreDataStack()")
         }
         
         return [Pin]()
@@ -64,7 +76,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("locationManager has triggered")
         let location = locations.last
         
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
@@ -113,11 +124,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let pin = Pin(annotationLatitude: newCoordinates.latitude, annotationLongitude: newCoordinates.longitude, context: delegate.stack.context)
             //annotation.coordinate = newCoordinates
             self.addPinToMap(pin)
-            
-            
+            let downloadImages = FlickrSearch()
+            downloadImages.getImageFromFlickrForPin(pin, currentPhotos: [Photo](), context: delegate.stack.context)
         }
     }
-        
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPhotoViewController" {
+            let destVC = segue.destinationViewController as! PhotoViewController
+            destVC.pin = sender as! Pin
+        }
+    }
+    
     func addPinToMap(pin: Pin) -> Void {
         
         CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude), completionHandler: {(placemarks, error) -> Void in
@@ -128,7 +146,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             if placemarks!.count > 0 {
                 let pm = placemarks![0]
-                print(pm)
                 
                 if (pm.subLocality != nil) {
                     pin.title = pm.subLocality!
@@ -157,9 +174,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 return
             }
         })
+    }
     
-        
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        performSegueWithIdentifier("toPhotoViewController", sender: view.annotation)
+    }
+    
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -169,10 +193,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = false
-            pinView!.animatesDrop = true
-//            let iconView = UIImageView(image: UIImage(named: "Image"))
-//            iconView.frame = CGRectMake(0, 0, 30, 30)
-//            pinView!.leftCalloutAccessoryView = iconView
+            pinView!.animatesDrop = false
             pinView!.pinTintColor = UIColor(colorLiteralRed: 145/255, green: 134/255, blue: 209/255, alpha: 1.0)
         }
         else {
@@ -181,17 +202,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         return pinView
     }
-    
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        performSegueWithIdentifier("toPhotoViewController", sender: nil)
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }
+
+
+
 

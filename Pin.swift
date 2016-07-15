@@ -5,6 +5,8 @@ import MapKit
 
 class Pin: NSManagedObject, MKAnnotation {
     
+    var isDownloading = false
+    
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
