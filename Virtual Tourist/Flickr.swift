@@ -182,6 +182,52 @@ class FlickrSearch {
                             }
                         }
                     }
+                } else if photosArray.count > currentPhotos.count {
+                    for (index, photo) in photosArray.enumerate() {
+                        if index < currentPhotos.count {
+                            let currentPhoto = currentPhotos[index]
+                            let photoDictionary = photo as [String: AnyObject]
+                            
+                            guard let imageUrlString = photoDictionary["url_m"] as? String else {
+                                print("Cannot find key 'url_m' in \(photoDictionary)")
+                                return
+                            }
+                            
+                            self.downloadPhoto(imageUrlString, photo: currentPhoto) { (photo: Photo, downloadedImage: NSData?) -> Void in
+                                if let downloadedImage = downloadedImage {
+                                    photo.photo = downloadedImage
+                                    
+                                    if photosDownloaded == numberOfPhotosToDownload {
+                                        pin.isDownloading = false
+                                    } else {
+                                        photosDownloaded += 1
+                                    }
+                                }
+                            }
+                        } else {
+                            let photoDictionary = photo as [String: AnyObject]
+                            
+                            /* GUARD: Does our photo have a key for 'url_m'? */
+                            guard let imageUrlString = photoDictionary["url_m"] as? String else {
+                                print("Cannot find key 'url_m' in \(photoDictionary)")
+                                return
+                            }
+                            
+                            let newPhoto = Photo(photoPin: pin, context: context)
+                            
+                            self.downloadPhoto(imageUrlString, photo: newPhoto) { (photo: Photo, downloadedImage: NSData?) -> Void in
+                                if let downloadedImage = downloadedImage {
+                                    photo.photo = downloadedImage
+                                    
+                                    if photosDownloaded == numberOfPhotosToDownload {
+                                        pin.isDownloading = false
+                                    } else {
+                                        photosDownloaded += 1
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
